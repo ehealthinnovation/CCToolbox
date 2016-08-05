@@ -2,10 +2,4 @@ use_frameworks!
 
 target 'CCToolbox_Example' do
   pod 'CCToolbox', :path => '../'
-
-  target 'CCToolbox_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
