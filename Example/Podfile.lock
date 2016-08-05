@@ -1,0 +1,14 @@
+PODS:
+  - CCToolbox (0.1.0)
+
+DEPENDENCIES:
+  - CCToolbox (from `../`)
+
+EXTERNAL SOURCES:
+  CCToolbox:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CCToolbox: fceed0fdcb9d5633fd9bce111b7327efb5ba27c2
+
+COCOAPODS: 0.38.2
