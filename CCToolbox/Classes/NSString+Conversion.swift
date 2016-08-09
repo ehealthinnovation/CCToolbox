@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    public func dataFromHexadecimalString() -> Data? {
+    public func dataFromHexadecimalString() -> NSData? {
         var data =  Data(capacity: characters.count / 2)
         
         let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
@@ -23,7 +23,7 @@ extension String {
         return data
     }
     
-    public func subStringWithRange(from:Int, to:Int) -> String {
+    public func subStringWithRange(_ from:Int, to:Int) -> String {
         if let range = self.range(of: self) {
             let lo = self.index(range.lowerBound, offsetBy: from)
             let hi = self.index(range.lowerBound, offsetBy: to)

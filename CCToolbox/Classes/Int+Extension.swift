@@ -40,7 +40,7 @@ extension Int {
     // Returns the size of this type (number of bytes)
     public static var size:Int{return strideof(self)}
     
-    public func bit(bit:Int) -> Int {
+    public func bit(_ bit:Int) -> Int {
         if(Int.size == 8){
             return Int(bitPattern: UInt( (self.toU64 & (0x1 << bit.toU64)) >> bit.toU64 ))
         } else {

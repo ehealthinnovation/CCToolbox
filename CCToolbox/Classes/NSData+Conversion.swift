@@ -12,7 +12,7 @@ extension NSData {
     
     public func toHexString() -> String {
         var hexString: String = ""
-        let dataBytes =  UnsafePointer<CUnsignedChar>(self.bytes)
+        let dataBytes =  UnsafePointer<CUnsignedChar>((self as NSData).bytes)
         
         for i in 0..<self.length {
             hexString +=  String(format: "%02X", dataBytes[i])
@@ -21,7 +21,7 @@ extension NSData {
         return hexString
     }
     
-    public func dataRange(From: Int, Length: Int) -> NSData {
+    public func dataRange(_ From: Int, Length: Int) -> Data {
         let chunk = self.subdata(with: NSMakeRange(From, Length))
         
         return chunk
@@ -43,15 +43,15 @@ extension NSData {
         return NSData(bytes: &array, length: count * sizeof(UInt16.self))
     }
     
-    public func readInteger<T : Integer>(start : Int) -> T {
+    public func readInteger<T : Integer>(_ start : Int) -> T {
         var d : T = 0
-        self.getBytes(&d, range: NSRange(location: start, length: sizeof(T.self)))
+        (self as NSData).getBytes(&d, range: NSRange(location: start, length: sizeof(T.self)))
         
         return d
     }
     
     public func shortFloatToFloat() -> Float {
-        let number8 : UInt8 = self.readInteger(start: 0);
+        let number8 : UInt8 = self.readInteger(0);
         let number : Int = Int(number8)
         
         // remove the mantissa portion of the number using bit shifting
@@ -76,14 +76,14 @@ extension NSData {
     }
     
     func lowNibbleAtPosition() ->Int {
-        let number : UInt8 = self.readInteger(start: 0);
+        let number : UInt8 = self.readInteger(0);
         let lowNibble = number & 0xF
         
         return Int(lowNibble)
     }
     
     func highNibbleAtPosition() ->Int {
-        let number : UInt8 = self.readInteger(start: 0);
+        let number : UInt8 = self.readInteger(0);
         let highNibble = number >> 4
         
         return Int(highNibble)
