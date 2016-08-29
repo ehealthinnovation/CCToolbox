@@ -10,20 +10,20 @@ import Foundation
 
 extension String {
     
-    public func dataFromHexadecimalString() -> Data? {
-        var data =  Data(capacity: characters.count / 2)
+    public func dataFromHexadecimalString() -> NSData? {
+        let data = NSMutableData(capacity: characters.count / 2)
         
         let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
         regex.enumerateMatches(in: self, options: [], range: NSMakeRange(0, characters.count)) { match, flags, stop in
             let byteString = (self as NSString).substring(with: match!.range)
-            let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
-            data.append([num], count: 1)
+            var num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
+            data?.append(&num, length: 1)
         }
         
         return data
     }
     
-    public func subStringWithRange(from:Int, to:Int) -> String {
+    public func subStringWithRange(_ from:Int, to:Int) -> String {
         if let range = self.range(of: self) {
             let lo = self.index(range.lowerBound, offsetBy: from)
             let hi = self.index(range.lowerBound, offsetBy: to)

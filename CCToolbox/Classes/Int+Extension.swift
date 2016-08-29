@@ -38,9 +38,9 @@ extension Int {
     public var toUInt:UInt{return UInt(bitPattern:self)}
     
     // Returns the size of this type (number of bytes)
-    public static var size:Int{return strideof(self)}
+    public static var size:Int{return MemoryLayout<Int>.stride}
     
-    public func bit(bit:Int) -> Int {
+    public func bit(_ bit:Int) -> Int {
         if(Int.size == 8){
             return Int(bitPattern: UInt( (self.toU64 & (0x1 << bit.toU64)) >> bit.toU64 ))
         } else {
