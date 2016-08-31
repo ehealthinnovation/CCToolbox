@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    public func dataFromHexadecimalString() -> NSData? {
+    public func dataFromHexadecimalString() -> NSMutableData? {
         let data = NSMutableData(capacity: characters.count / 2)
         
         let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)

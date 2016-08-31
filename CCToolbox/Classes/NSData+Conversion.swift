@@ -1,5 +1,5 @@
 //
-//  NSData+Conversion.swift
+//  NSq+Conversion.swift
 //  Pods
 //
 //  Created by Kevin Tallevi on 7/7/16.
@@ -10,7 +10,11 @@ import Foundation
 
 extension NSData {
     
-    public func toHexString() -> String {        
+    /**
+     * @brief Method to convert a Data object to a hex String object
+     * @return String object in hexadecimal format.
+     */
+    public func toHexString() -> String {
         let string = NSMutableString(capacity: length * 2)
         var byte: UInt8 = 0
         
@@ -22,10 +26,10 @@ extension NSData {
         return string as String
     }
     
-    public func dataRange(_ From: Int, Length: Int) -> Data {
+    public func dataRange(_ From: Int, Length: Int) -> NSData {
         let chunk = self.subdata(with: NSMakeRange(From, Length))
         
-        return chunk
+        return chunk as NSData
     }
     
     public func swapUInt16Data() -> NSData {
@@ -62,7 +66,7 @@ extension NSData {
             // exponent is signed and should be negative 8 = -8, 9 = -7, ... 15 = -1. Range is 7 to -8
             exponent = -((0x000F + 1) - exponent);
         }
-    
+        
         // remove exponent portion of the number using bit mask
         var mantissa:Int = number & 4095
         
