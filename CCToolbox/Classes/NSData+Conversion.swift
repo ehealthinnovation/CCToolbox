@@ -1,10 +1,10 @@
-//
-//  NSq+Conversion.swift
+/**
+//  @class NSData+Conversion
 //  Pods
 //
 //  Created by Kevin Tallevi on 7/7/16.
 //
-//
+*/
 
 import Foundation
 
@@ -12,7 +12,8 @@ extension NSData {
     
     /**
      * @brief Method to convert a Data object to a hex String object
-     * @return String object in hexadecimal format.
+     * @param none
+     * @return String
      */
     public func toHexString() -> String {
         let string = NSMutableString(capacity: length * 2)
@@ -26,12 +27,22 @@ extension NSData {
         return string as String
     }
     
+    /**
+     * @brief Method to return a subset of the NSData object
+     * @param From: int value of the starting location , Length: length of data
+     * @return NSData
+     */
     public func dataRange(_ From: Int, Length: Int) -> NSData {
         let chunk = self.subdata(with: NSMakeRange(From, Length))
         
         return chunk as NSData
     }
     
+    /**
+     * @brief Method to swap 2 int16 bytes in an NSData object
+     * @param none
+     * @return NSData
+     */
     public func swapUInt16Data() -> NSData {
         
         // Copy data into UInt16 array:
@@ -48,6 +59,11 @@ extension NSData {
         return NSData(bytes: &array, length: count * MemoryLayout<UInt16>.size)
     }
     
+    /**
+     * @brief Method to read the integer value of a byte in an NSData object
+     * @param location of the byte in the NSData object
+     * @return Subset
+     */
     public func readInteger<T : Integer>(_ start : Int) -> T {
         var d : T = 0
         (self as NSData).getBytes(&d, range: NSRange(location: start, length: MemoryLayout<T>.size))
@@ -55,6 +71,11 @@ extension NSData {
         return d
     }
     
+    /**
+     * @brief Method to convert a short float value to a short
+     * @param none
+     * @return float
+     */
     public func shortFloatToFloat() -> Float {
         let number8 : UInt8 = self.readInteger(0);
         let number : Int = Int(number8)
@@ -80,6 +101,11 @@ extension NSData {
         return floatMantissa * Float(pow(10, Float(exponent)/1))
     }
     
+    /**
+     * @brief Method to return the low nibble of a byte
+     * @param none
+     * @return Int
+     */
     func lowNibbleAtPosition() ->Int {
         let number : UInt8 = self.readInteger(0);
         let lowNibble = number & 0xF
@@ -87,6 +113,11 @@ extension NSData {
         return Int(lowNibble)
     }
     
+    /**
+     * @brief Method to return the high nibble of a byte
+     * @param none
+     * @return Int
+     */
     func highNibbleAtPosition() ->Int {
         let number : UInt8 = self.readInteger(0);
         let highNibble = number >> 4
