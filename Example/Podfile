@@ -1,8 +1,8 @@
 platform :ios, '10.0'
 use_frameworks!
 
-source 'https://github.com/CocoaPods/Specs.git'
-source 'git@github.ehealthinnovation.org:PHIT/CocoaPods.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+#source 'git@github.ehealthinnovation.org:PHIT/CocoaPods.git'
 
 target 'CCToolbox_Example' do
   pod 'CCToolbox', :path => '../'
