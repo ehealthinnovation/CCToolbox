@@ -48,7 +48,7 @@ extension Int {
         }
     }
     
-    func toBool () -> Bool? {
+    public func toBool () -> Bool? {
         switch self {
         case 0:
             return false
