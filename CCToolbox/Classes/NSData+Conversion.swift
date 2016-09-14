@@ -106,7 +106,7 @@ extension NSData {
      * @param none
      * @return Int
      */
-    func lowNibbleAtPosition() ->Int {
+    public func lowNibbleAtPosition() ->Int {
         let number : UInt8 = self.readInteger(0);
         let lowNibble = number & 0xF
         
@@ -118,7 +118,7 @@ extension NSData {
      * @param none
      * @return Int
      */
-    func highNibbleAtPosition() ->Int {
+    public func highNibbleAtPosition() ->Int {
         let number : UInt8 = self.readInteger(0);
         let highNibble = number >> 4
         
