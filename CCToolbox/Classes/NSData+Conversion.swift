@@ -77,7 +77,7 @@ extension NSData {
      * @return float
      */
     public func shortFloatToFloat() -> Float {
-        let number8 : UInt8 = self.readInteger(0);
+        let number8 : UInt16 = readInteger(0);
         let number : Int = Int(number8)
         
         // remove the mantissa portion of the number using bit shifting

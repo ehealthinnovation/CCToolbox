@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-//import CCToolbox
+import CCToolbox
 
 class Tests: XCTestCase {
     
@@ -14,16 +14,18 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testIntegerToBoolean() {
+        
+        XCTAssert(1.toBool() == true, "expected one to be true");
+        XCTAssert(0.toBool() == false, "expected zero to be false");
+        
+        XCTAssert((-1).toBool() == nil, "invalid should be nil");
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
+ 
+    func testShortFloatToFloat() {
+        let dataSet = NSData(bytes: [0x2C, 0xB0] as [UInt8], length: 2)
+        let result = dataSet.shortFloatToFloat()
+        
+        XCTAssert(result == 0.000439999974, "expected one to be 0.000439999974");
     }
-    
 }
