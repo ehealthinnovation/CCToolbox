@@ -34,4 +34,9 @@ extension String {
         
         return ""
     }
+    
+    public var dateFromISO8601: Date? {
+        return Date.Formatter.iso8601.date(from: self)
+    }
 }
+
