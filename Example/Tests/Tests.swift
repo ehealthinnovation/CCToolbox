@@ -16,24 +16,31 @@ class Tests: XCTestCase {
     
     func testIntegerToBoolean() {
         
-        XCTAssert(1.toBool() == true, "expected one to be true");
-        XCTAssert(0.toBool() == false, "expected zero to be false");
+        XCTAssert(1.toBool() == true, "expected one to be true")
+        XCTAssert(0.toBool() == false, "expected zero to be false")
         
-        XCTAssert((-1).toBool() == nil, "invalid should be nil");
+        XCTAssert((-1).toBool() == nil, "invalid should be nil")
     }
  
     func testShortFloatToFloat() {
         let dataSet = NSData(bytes: [0x2C, 0xB0] as [UInt8], length: 2)
         let result = dataSet.shortFloatToFloat()
         
-        XCTAssert(result == 0.000439999974, "expected one to be 0.000439999974");
+        XCTAssert(result == 0.000439999974, "expected result to be 0.000439999974")
+    }
+    
+    func testFloatToShortFloat() {
+        let input: Float = 5.22
+        let result: Float = input.floatToShortFloat()
+        
+        XCTAssert(result == 57866, "expected result to be 57866")
     }
     
     func testISO8601Dates() {
-        let specificDateTime = Date(timeIntervalSince1970: 1474566059) // Sept 22, 2016, 17:40:59
+        let specificDateTime = Date(timeIntervalSince1970: 1474566059)
         
         // convert date to string and test
-        let stringFromDate = specificDateTime.iso8601    // "1997-02-02T02:26:51.000Z"
+        let stringFromDate = specificDateTime.iso8601
         XCTAssertEqual("2016-09-22T17:40:59.000Z", stringFromDate)
         
         // convert string back to date and test
