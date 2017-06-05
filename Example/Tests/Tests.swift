@@ -47,4 +47,14 @@ class Tests: XCTestCase {
         let dateFromString = stringFromDate.dateFromISO8601
         XCTAssertEqual(dateFromString, specificDateTime)
     }
+    
+    func testMCRF4XX() {
+        let testData: NSData = NSData(bytes: [0x1A, 0x00], length: 2)
+        let crc: NSData = testData.crcMCRF4XX
+        
+        let expectedCRCBytes: [UInt8] = [0x59, 0x98]
+        let expectedCRC = NSData(bytes: expectedCRCBytes, length: expectedCRCBytes.count)
+        
+        XCTAssertEqual(crc, expectedCRC)
+    }
 }
