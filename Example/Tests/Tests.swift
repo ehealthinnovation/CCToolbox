@@ -57,4 +57,12 @@ class Tests: XCTestCase {
         
         XCTAssertEqual(crc, expectedCRC)
     }
+    
+    func testFloatTruncation() {
+        let pi: Float = 3.14159
+        let result = pi.truncate(numberOfDigits: 2)
+        
+        XCTAssert(result == 3.14, "expected result to be 3.14")
+
+    }
 }
