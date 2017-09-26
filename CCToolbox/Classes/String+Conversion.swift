@@ -29,7 +29,7 @@ extension String {
             let hi = self.index(range.lowerBound, offsetBy: to)
             let subRange = lo ..< hi
             
-            return self[subRange]
+            return String(self[subRange])
         }
         
         return ""

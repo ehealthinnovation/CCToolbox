@@ -64,21 +64,21 @@ extension NSData {
      * @param location of the byte in the NSData object
      * @return Subset
      */
-    public func readInteger<T : Integer>(_ start : Int) -> T {
+    func readInteger<T : BinaryInteger>(_ start : Int) -> T {
         var d : T = 0
-        (self as NSData).getBytes(&d, range: NSRange(location: start, length: MemoryLayout<T>.size))
+        self.getBytes(&d, range: NSRange(location: start, length: MemoryLayout<T>.size))
         
         return d
     }
     
     /**
-     * @brief Method to convert a short float value to a short
+     * @brief Method to convert a short float value to a float
      * @param none
      * @return float
      */
     public func shortFloatToFloat() -> Float {
-        let number8 : UInt16 = readInteger(0);
-        let number : Int = Int(number8)
+        let value : UInt16 = readInteger(0);
+        let number : Int = Int(value)
         
         // remove the mantissa portion of the number using bit shifting
         var exponent: Int = number >> 12

@@ -13,17 +13,17 @@ import Foundation
 
 extension Int {
     // Perform a bit pattern truncating conversion to UInt8
-    public var toU8: UInt8{return UInt8(truncatingBitPattern:self)}
+    public var toU8: UInt8{return UInt8(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to Int8
-    public var to8: Int8{return Int8(truncatingBitPattern:self)}
+    public var to8: Int8{return Int8(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to UInt16
-    public var toU16: UInt16{return UInt16(truncatingBitPattern:self)}
+    public var toU16: UInt16{return UInt16(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to Int16
-    public var to16: Int16{return Int16(truncatingBitPattern:self)}
+    public var to16: Int16{return Int16(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to UInt32
-    public var toU32: UInt32{return UInt32(truncatingBitPattern:self)}
+    public var toU32: UInt32{return UInt32(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to Int32
-    public var to32: Int32{return Int32(truncatingBitPattern:self)}
+    public var to32: Int32{return Int32(truncatingIfNeeded:self)}
     // Perform a bit pattern truncating conversion to UInt64
     public var toU64: UInt64{
         return UInt64(self) //No difference if the platform is 32 or 64
