@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CCToolbox'
-  s.version          = '0.7.5'
+  s.version          = '0.7.6'
   s.summary          = 'A short description of CCToolbox.'
 
 # This description is used to generate tags and improve search results.
