@@ -64,7 +64,7 @@ extension NSData {
      * @param location of the byte in the NSData object
      * @return Subset
      */
-    func readInteger<T : BinaryInteger>(_ start : Int) -> T {
+    public func readInteger<T : BinaryInteger>(_ start : Int) -> T {
         var d : T = 0
         self.getBytes(&d, range: NSRange(location: start, length: MemoryLayout<T>.size))
         
