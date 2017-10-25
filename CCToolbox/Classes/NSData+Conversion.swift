@@ -52,11 +52,27 @@ extension NSData {
         
         // Swap each integer:
         for i in 0 ..< count {
-            array[i] = array[i].byteSwapped // *** (see below)
+            array[i] = array[i].byteSwapped
         }
         
         // Create NSData from array:
         return NSData(bytes: &array, length: count * MemoryLayout<UInt16>.size)
+    }
+    
+    public func swapUInt32Data(data: NSData) -> NSData {
+        
+        // Copy data into UInt32 array:
+        let count = data.length / MemoryLayout<UInt32>.size
+        var array = [UInt32](repeating: 0, count: count)
+        data.getBytes(&array, length: count * MemoryLayout<UInt32>.size)
+        
+        // Swap each integer:
+        for i in 0 ..< count {
+            array[i] = array[i].byteSwapped
+        }
+        
+        // Create NSData from array:
+        return NSData(bytes: &array, length: count * MemoryLayout<UInt32>.size)
     }
     
     /**
