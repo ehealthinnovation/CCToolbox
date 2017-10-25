@@ -59,12 +59,12 @@ extension NSData {
         return NSData(bytes: &array, length: count * MemoryLayout<UInt16>.size)
     }
     
-    public func swapUInt32Data(data: NSData) -> NSData {
+    public func swapUInt32Data() -> NSData {
         
         // Copy data into UInt32 array:
-        let count = data.length / MemoryLayout<UInt32>.size
+        let count = self.length / MemoryLayout<UInt32>.size
         var array = [UInt32](repeating: 0, count: count)
-        data.getBytes(&array, length: count * MemoryLayout<UInt32>.size)
+        self.getBytes(&array, length: count * MemoryLayout<UInt32>.size)
         
         // Swap each integer:
         for i in 0 ..< count {
