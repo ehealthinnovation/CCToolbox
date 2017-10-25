@@ -140,4 +140,18 @@ extension NSData {
         
         return Int(highNibble)
     }
+    
+    /**
+     * @brief Method to return a float
+     * @param none
+     * @return float
+     */
+    public func toFloat<T>() -> T {
+        let dataStr: String = self.toHexString()
+        var toInt = Int(truncatingIfNeeded: strtol(dataStr, nil, 16))
+        var floatValue:T?
+        memcpy(&floatValue, &toInt, MemoryLayout.size(ofValue: floatValue))
+        
+        return floatValue!
+    }
 }

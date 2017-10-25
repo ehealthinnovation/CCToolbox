@@ -63,6 +63,12 @@ class Tests: XCTestCase {
         let result = pi.truncate(numberOfDigits: 2)
         
         XCTAssert(result == 3.14, "expected result to be 3.14")
-
+    }
+    
+    func testToFloat32() {
+        let testData: NSData = NSData(bytes: [0x41, 0x23, 0x33, 0x33] as [UInt8], length: 4)
+        let result: Float32 = testData.toFloat()
+        
+        XCTAssert(result == 10.1999998, "expected result to be 10.1999998")
     }
 }
