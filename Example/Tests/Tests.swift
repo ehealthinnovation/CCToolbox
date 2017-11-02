@@ -65,10 +65,18 @@ class Tests: XCTestCase {
         XCTAssert(result == 3.14, "expected result to be 3.14")
     }
     
-    func testToFloat32() {
+    func testToNSDataToFloat32() {
         let testData: NSData = NSData(bytes: [0x41, 0x23, 0x33, 0x33] as [UInt8], length: 4)
         let result: Float32 = testData.toFloat()
         
         XCTAssert(result == 10.1999998, "expected result to be 10.1999998")
+    }
+    
+    func testNSDataDecode() {
+        let testData: NSData = NSData(bytes: [0x3F, 0x03] as [UInt8], length: 2)
+        let result: UInt16 = testData.decode()
+        print("result: \(result)")
+        
+        XCTAssert(result == 831, "expected result to be 831")
     }
 }

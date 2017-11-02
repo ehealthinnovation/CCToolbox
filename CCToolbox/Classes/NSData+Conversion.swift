@@ -154,4 +154,16 @@ extension NSData {
         
         return floatValue!
     }
+    
+    /**
+     * @brief Method to decode byte/bytes to a specified value (typically Int)
+     * @param none
+     * @return T
+     */
+    public func decode<T>() -> T {
+        let pointer = UnsafeMutablePointer<T>.allocate(capacity: MemoryLayout<T.Type>.size)
+        self.getBytes(pointer, length: MemoryLayout<T>.size)
+        
+        return pointer.move()
+    }
 }
