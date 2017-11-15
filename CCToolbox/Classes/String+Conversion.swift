@@ -11,10 +11,10 @@ import Foundation
 extension String {
     
     public func dataFromHexadecimalString() -> NSMutableData? {
-        let data = NSMutableData(capacity: characters.count / 2)
+        let data = NSMutableData(capacity: self.count / 2)
         
         let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
-        regex.enumerateMatches(in: self, options: [], range: NSMakeRange(0, characters.count)) { match, flags, stop in
+        regex.enumerateMatches(in: self, options: [], range: NSMakeRange(0, self.count)) { match, flags, stop in
             let byteString = (self as NSString).substring(with: match!.range)
             var num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
             data?.append(&num, length: 1)

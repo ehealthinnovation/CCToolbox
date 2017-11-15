@@ -15,7 +15,6 @@ class Tests: XCTestCase {
     }
     
     func testIntegerToBoolean() {
-        
         XCTAssert(1.toBool() == true, "expected one to be true")
         XCTAssert(0.toBool() == false, "expected zero to be false")
         
@@ -75,8 +74,17 @@ class Tests: XCTestCase {
     func testNSDataDecode() {
         let testData: NSData = NSData(bytes: [0x3F, 0x03] as [UInt8], length: 2)
         let result: UInt16 = testData.decode()
-        print("result: \(result)")
         
         XCTAssert(result == 831, "expected result to be 831")
+    }
+    
+    
+    func testDataFromHexidecmalString() {
+        let testString: String = "0E48"
+        let result: NSData = testString.dataFromHexadecimalString()!
+        let expectedBytes: [UInt8] = [0x0E, 0x48]
+        let expectedResult = NSData(bytes: expectedBytes, length: expectedBytes.count)
+        
+        XCTAssertEqual(result, expectedResult)
     }
 }
