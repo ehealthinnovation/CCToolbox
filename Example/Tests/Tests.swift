@@ -78,7 +78,6 @@ class Tests: XCTestCase {
         XCTAssert(result == 831, "expected result to be 831")
     }
     
-    
     func testDataFromHexidecmalString() {
         let testString: String = "0E48"
         let result: NSData = testString.dataFromHexadecimalString()!
@@ -86,5 +85,12 @@ class Tests: XCTestCase {
         let expectedResult = NSData(bytes: expectedBytes, length: expectedBytes.count)
         
         XCTAssertEqual(result, expectedResult)
+    }
+    
+    func testBoolIntValue() {
+        let testBool: Bool = true
+        let result = testBool.intValue
+        
+        XCTAssertEqual(result, 1)
     }
 }
