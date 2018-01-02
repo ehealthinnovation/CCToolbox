@@ -93,4 +93,14 @@ class Tests: XCTestCase {
         
         XCTAssertEqual(result, 1)
     }
+    
+    func testMutableDataAppendByte() {
+        let data = NSMutableData()
+        data.appendByte(100)
+        
+        let expectedByte: [UInt8] = [0x64]
+        let expectedData = NSData(bytes: expectedByte, length: expectedByte.count)
+        
+        XCTAssertEqual(data, expectedData)
+    }
 }
