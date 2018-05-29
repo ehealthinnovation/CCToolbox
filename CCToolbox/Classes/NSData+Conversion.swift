@@ -166,4 +166,19 @@ extension NSData {
         
         return pointer.move()
     }
+    
+    /**
+     * @brief Method to reverse bytes
+     * @param none
+     * @return NSData
+     */
+    public func reverseData() -> NSData {
+        let data = NSMutableData()
+        for index in (0 ..< self.length).reversed() {
+            data.append((self.subdata(with: NSRange(location: index, length: 1))))
+        }
+        
+        return data
+    }
+    
 }

@@ -103,4 +103,12 @@ class Tests: XCTestCase {
         
         XCTAssertEqual(data, expectedData)
     }
+    
+    func testReverseBytes() {
+        let testData: NSData = NSData(bytes: [0x41, 0x23, 0x33, 0x15] as [UInt8], length: 4).reverseData()
+        let expectedBytes: [UInt8] = [0x15, 0x33, 0x23, 0x41]
+        let expectedResult = NSData(bytes: expectedBytes, length: expectedBytes.count)
+        
+        XCTAssertEqual(testData, expectedResult)
+    }
 }
